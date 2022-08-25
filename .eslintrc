@@ -37,8 +37,13 @@
       "warn",
       {
         "endOfLine": "auto",
-        "singleQuote": true
+        "singleQuote": false
       }
     ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
