@@ -1,10 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
 import { authService } from "@/api";
+import { userState } from "@/state/user";
+import { useSetRecoilState } from "recoil";
 
-const Auth = ({ setIsLoggedIn }: { setIsLoggedIn: Dispatch<SetStateAction<boolean>> }) => {
+const Auth = () => {
+  const setIsLoggedIn = useSetRecoilState(userState);
   return (
     <>
-      <button onClick={() => setIsLoggedIn(true)}>Login</button>
+      <button onClick={() => setIsLoggedIn({ auth: true })}>Login</button>
       <button onClick={() => authService.kakaoLogin()}>카카오 로그인</button>
     </>
   );

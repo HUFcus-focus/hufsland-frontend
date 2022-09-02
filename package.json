@@ -18,6 +18,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
+    "recoil": "^0.7.5",
     "styled-components": "^5.3.5",
     "styled-reset": "^4.4.2"
   },
@@ -25,6 +26,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "@types/react-router-dom": "^5.3.3",
+    "@types/recoil": "^0.0.9",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
