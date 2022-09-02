@@ -1,6 +1,8 @@
+import { URL } from "@/constants/index";
+
 const authService = {
   kakaoLogin() {
-    console.log("카카오");
+    console.log(URL.KAKAO_AUTH);
     return;
   },
 };

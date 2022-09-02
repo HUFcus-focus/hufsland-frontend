@@ -13,7 +13,7 @@ const Router = () => {
       <Suspense fallback={<></>}>
         <Routes>
           <Route path='/' element={isLoggedIn.auth ? <Home /> : <Auth />} />
-          <Route path='*' element={<Navigate to='/' replace />} />
+          {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
         </Routes>
       </Suspense>
     </BrowserRouter>

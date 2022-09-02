@@ -1,6 +1,7 @@
 import axios from "axios";
+import { URL } from "@/constants/index";
 
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = URL.BASE;
 
 const fetcher = async (
   method: "get" | "post" | "put" | "delete",
