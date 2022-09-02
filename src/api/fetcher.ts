@@ -1,10 +1,10 @@
 import axios from "axios";
-import { URL, MESSAGE } from "@/constants/index";
+import { METHOD, URL, MESSAGE } from "@/constants/index";
 
 axios.defaults.baseURL = URL.BASE;
 
 const fetcher = async (
-  method: "get" | "post" | "put" | "delete",
+  method: typeof METHOD[keyof typeof METHOD],
   url: string,
   ...rest: { [key: string]: any }[]
 ) => {
