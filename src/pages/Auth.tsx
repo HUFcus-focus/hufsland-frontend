@@ -1,7 +1,11 @@
-import { Dispatch, SetStateAction } from "react";
+import { URL } from "@/constants";
 
-const Auth = ({ setIsLoggedIn }: { setIsLoggedIn: Dispatch<SetStateAction<boolean>> }) => {
-  return <button onClick={() => setIsLoggedIn(true)}>Login</button>;
+const Auth = () => {
+  return (
+    <>
+      <a href={URL.KAKAO_AUTH}>카카오 로그인</a>
+    </>
+  );
 };
 
 export default Auth;
