@@ -1,9 +1,9 @@
-import { URL } from "@/constants/index";
+import { METHOD } from "@/constants/index";
+import fetcher from "@/api/fetcher";
 
 const authService = {
-  kakaoLogin() {
-    console.log(URL.KAKAO_AUTH);
-    return;
+  kakaoLogin(code: string | null) {
+    return fetcher(METHOD.GET, `/auth/kakao?code=${code}`);
   },
 };
 

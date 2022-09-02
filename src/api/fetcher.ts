@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL } from "@/constants/index";
+import { URL, MESSAGE } from "@/constants/index";
 
 axios.defaults.baseURL = URL.BASE;
 
@@ -8,8 +8,12 @@ const fetcher = async (
   url: string,
   ...rest: { [key: string]: any }[]
 ) => {
-  const res = await axios[method](url, ...rest);
-  return res.data;
+  try {
+    const res = await axios[method](url, ...rest);
+    return res.data;
+  } catch (error: any) {
+    alert(`${MESSAGE.ALERT_API} (${error.message})`);
+  }
 };
 
 export default fetcher;
