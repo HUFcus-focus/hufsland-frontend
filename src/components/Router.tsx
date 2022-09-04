@@ -8,13 +8,13 @@ const Home = lazy(() => import("@/pages/Home"));
 const Auth = lazy(() => import("@/pages/Auth"));
 
 const Router = () => {
-  const isLoggedIn = useRecoilValue(userState).auth;
+  const hasTokken = useRecoilValue(userState).token !== "";
   return (
     <BrowserRouter>
       <Suspense fallback={<></>}>
         <Routes>
-          <Route path='/' element={isLoggedIn ? <Home /> : <Auth />} />
-          <Route path='/auth/kakao/*' element={!isLoggedIn && <Kakao />}></Route>
+          <Route path='/' element={hasTokken ? <Home /> : <Auth />} />
+          <Route path='/auth/kakao/*' element={!hasTokken && <Kakao />}></Route>
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </Suspense>

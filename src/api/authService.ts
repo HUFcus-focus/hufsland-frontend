@@ -2,7 +2,7 @@ import { METHOD } from "@/constants/index";
 import fetcher from "@/api/fetcher";
 
 const authService = {
-  kakaoLogin(code: string | null) {
+  kakaoLogin(code: string) {
     return fetcher(METHOD.GET, `/auth/kakao?code=${code}`);
   },
 };
