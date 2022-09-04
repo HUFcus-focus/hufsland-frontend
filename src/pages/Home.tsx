@@ -1,9 +1,9 @@
 import { userState } from "@/state/user";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 const Home = () => {
-  const setIsLoggedIn = useSetRecoilState(userState);
-  return <button onClick={() => setIsLoggedIn({ auth: false })}>Logout</button>;
+  const [user, setUser] = useRecoilState(userState);
+  return <button onClick={() => setUser({ ...user, token: "" })}>Logout</button>;
 };
 
 export default Home;
