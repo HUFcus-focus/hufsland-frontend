@@ -1,4 +1,4 @@
-import { URL } from "@/constants";
+import { URL } from "@/shared/constants";
 
 const Auth = () => {
   return <a href={URL.KAKAO_AUTH}>카카오 로그인</a>;

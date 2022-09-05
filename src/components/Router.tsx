@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { useRecoilValue } from "recoil";
-import { userState } from "@/state/user";
+import { userState } from "@/shared/state/user";
 import { Kakao } from "@/components/auth";
 
 const Home = lazy(() => import("@/pages/Home"));
