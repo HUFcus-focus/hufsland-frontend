@@ -1,5 +1,5 @@
 import axios from "axios";
-import { METHOD, URL, MESSAGE } from "@/constants/index";
+import { METHOD, URL, MESSAGE } from "@/shared/constants/index";
 
 axios.defaults.baseURL = URL.BASE;
 

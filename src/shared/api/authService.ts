@@ -1,5 +1,5 @@
-import { METHOD } from "@/constants/index";
-import fetcher from "@/api/fetcher";
+import { METHOD } from "@/shared/constants/index";
+import fetcher from "@/shared/api/fetcher";
 
 const authService = {
   kakaoLogin(code: string) {

@@ -1,4 +1,4 @@
-import { userState } from "@/state/user";
+import { userState } from "@/shared/state/user";
 import { useRecoilState } from "recoil";
 
 const Home = () => {

@@ -1,5 +1,5 @@
-import { authService } from "@/api";
-import { userState } from "@/state/user";
+import { authService } from "@/shared/api";
+import { userState } from "@/shared/state/user";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
