@@ -1,1 +1,1 @@
-export { default as authService } from "@/shared/api/authService";
+export { default as authApi } from "@/shared/api/authApi";
