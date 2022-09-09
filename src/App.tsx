@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "@/styles/global-style";
 import { theme } from "@/styles/theme";
 import { RecoilRoot } from "recoil";
-import { DebugObserver } from "@/components/common";
+import { DebugObserver, AppLayout } from "@/components/common";
 
 function App() {
   return (
@@ -12,7 +12,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <RecoilRoot>
           <DebugObserver />
-          <Router />
+          <AppLayout>
+            <Router />
+          </AppLayout>
         </RecoilRoot>
       </ThemeProvider>
     </>

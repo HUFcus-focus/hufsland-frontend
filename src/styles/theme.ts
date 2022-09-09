@@ -2,7 +2,12 @@ import { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme = {
   color: {
-    primary: "#222222",
+    green: "#adea97",
+    blue: "#7c9bfb",
+    yellow: "#ffefb0",
+    pink: "#f3b2b2",
+    brown: "#c1b097",
+    white: "#ffffff",
   },
 };
 

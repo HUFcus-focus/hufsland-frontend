@@ -1,4 +1,4 @@
-import { authService } from "@/shared/api";
+import { authApi } from "@/shared/api";
 import { userState } from "@/shared/state/user";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const Kakao = () => {
   const navigate = useNavigate();
 
   const getToken = async () => {
-    const token: string = await authService.kakaoLogin(code);
+    const token: string = await authApi.getKakaoToken(code);
     setUser({ ...user, token: token });
     navigate("/");
   };
