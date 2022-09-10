@@ -10,11 +10,18 @@ const authApi = {
       code: code,
     };
     const queryString: any = Object.keys(data)
-      .map((k) => encodeURIComponent(k) + "=" + encodeURI(data[k]))
+      .map((key) => encodeURIComponent(key) + "=" + encodeURI(data[key]))
       .join("&");
     return fetcher(METHOD.POST, URL.KAKAO_TOKEN, queryString, {
       headers: {
         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    });
+  },
+  getserviceToken(token: string) {
+    return fetcher(METHOD.GET, "auth/token", {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
     });
   },

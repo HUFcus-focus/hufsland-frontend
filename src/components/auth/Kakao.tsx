@@ -12,7 +12,9 @@ const Kakao = () => {
 
   const kakaoLogin = async () => {
     const kakaoToken = await authApi.getKakaoToken(code);
-    setUser({ ...user, token: kakaoToken.access_token });
+    console.log(kakaoToken.access_token);
+    const serviceToken = await authApi.getserviceToken(kakaoToken.access_token);
+    setUser({ ...user, token: serviceToken });
     navigate("/");
   };
 
