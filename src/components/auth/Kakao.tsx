@@ -11,8 +11,8 @@ const Kakao = () => {
   const navigate = useNavigate();
 
   const kakaoLogin = async () => {
-    const token: string = await authApi.getKakaoToken(code);
-    setUser({ ...user, token: token });
+    const kakaoToken = await authApi.getKakaoToken(code);
+    setUser({ ...user, token: kakaoToken.access_token });
     navigate("/");
   };
 
