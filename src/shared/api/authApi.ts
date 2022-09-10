@@ -1,5 +1,5 @@
-import { METHOD } from "@/shared/constants/index";
 import fetcher from "@/shared/api/fetcher";
+import { METHOD } from "@/shared/constants/index";
 
 const authApi = {
   getKakaoToken(code: string) {
