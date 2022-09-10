@@ -1,9 +1,10 @@
-import Router from "@/components/Router";
+import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
+
+import { AppLayout, DebugObserver } from "@/components/common";
+import Router from "@/components/Router";
 import { GlobalStyle } from "@/styles/global-style";
 import { theme } from "@/styles/theme";
-import { RecoilRoot } from "recoil";
-import { DebugObserver, AppLayout } from "@/components/common";
 
 function App() {
   return (

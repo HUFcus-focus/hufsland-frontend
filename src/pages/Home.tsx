@@ -1,5 +1,6 @@
-import { userState } from "@/shared/state/user";
 import { useRecoilState } from "recoil";
+
+import { userState } from "@/shared/state/user";
 
 const Home = () => {
   const [user, setUser] = useRecoilState(userState);
