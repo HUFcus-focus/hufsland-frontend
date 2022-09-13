@@ -18,7 +18,7 @@ const authApi = {
       },
     });
   },
-  getserviceToken(token: string) {
+  getServiceToken(token: string) {
     return fetcher(METHOD.GET, "auth/token", {
       headers: {
         Authorization: `Bearer ${token}`,
