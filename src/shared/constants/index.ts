@@ -6,7 +6,7 @@ export const METHOD = {
 } as const;
 
 export const URL = Object.freeze({
-  BASE: "http://localhost:8000",
+  BASE: `${import.meta.env.BASE_URL}`,
   KAKAO_AUTH: `https://kauth.kakao.com/oauth/authorize?client_id=${
     import.meta.env.VITE_REST_API_KEY
   }&redirect_uri=${import.meta.env.VITE_REDIRECT_URI}&response_type=code`,
