@@ -18,7 +18,7 @@ const authApi = {
       },
     });
   },
-  getServiceToken(token: string) {
+  sendKakaoToken(token: string) {
     return fetcher(METHOD.GET, "auth/token", {
       headers: {
         Authorization: `Bearer ${token}`,
