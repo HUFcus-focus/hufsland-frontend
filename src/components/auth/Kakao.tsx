@@ -6,16 +6,18 @@ import { authApi } from "@/shared/api";
 import { userState } from "@/shared/state/user";
 
 const Kakao = () => {
-  const code = new URL(document.URL).searchParams.get("code") as string;
+  const code = new URL(document.URL).searchParams.get("code");
   const [user, setUser] = useRecoilState(userState);
   const navigate = useNavigate();
 
   const kakaoLogin = async () => {
-    const kakaoToken = await authApi.getKakaoToken(code);
-    const serviceToken = await authApi.getServiceToken(kakaoToken.access_token);
-    if (serviceToken) {
-      localStorage.setItem("user", JSON.stringify({ token: serviceToken }));
-      setUser({ ...user, isLoggedIn: true });
+    if (typeof code === "string") {
+      const kakaoToken = await authApi.getKakaoToken(code);
+      const serviceToken = await authApi.getServiceToken(kakaoToken.access_token);
+      if (serviceToken) {
+        localStorage.setItem("user", JSON.stringify({ token: serviceToken }));
+        setUser({ ...user, isLoggedIn: true });
+      }
     }
     navigate("/");
   };
