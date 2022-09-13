@@ -12,13 +12,13 @@ const Router = () => {
   const [user, setUser] = useRecoilState(userState);
 
   useEffect(() => {
-    const checkToken = () => {
+    const checkLocalStorage = () => {
       setUser({ ...user, isLoggedIn: Boolean(localStorage.getItem("user")) });
     };
-    addEventListener("storage", checkToken);
-    checkToken();
+    addEventListener("storage", checkLocalStorage);
+    checkLocalStorage();
     return () => {
-      removeEventListener("storage", checkToken);
+      removeEventListener("storage", checkLocalStorage);
     };
   }, []);
 
