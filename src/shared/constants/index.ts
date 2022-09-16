@@ -1,3 +1,5 @@
+export const USER = "user";
+
 export const METHOD = {
   GET: "get",
   POST: "post",

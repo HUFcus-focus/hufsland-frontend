@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { Kakao } from "@/components/auth";
+import { USER } from "@/shared/constants/index";
 import { userState } from "@/shared/state/user";
 
 const Home = lazy(() => import("@/pages/Home"));
@@ -13,7 +14,7 @@ const Router = () => {
 
   useEffect(() => {
     const checkLocalStorage = () => {
-      setUser({ ...user, isLoggedIn: Boolean(localStorage.getItem("user")) });
+      setUser({ ...user, isLoggedIn: Boolean(localStorage.getItem(USER)) });
     };
     addEventListener("storage", checkLocalStorage);
     checkLocalStorage();
