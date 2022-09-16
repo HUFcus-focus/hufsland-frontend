@@ -10,6 +10,7 @@ export const METHOD = {
 export const PATH = Object.freeze({
   HOME: "/",
   KAKAO: "/auth/kakao/*",
+  INFO: "/info",
   ALL: "*",
 });
 
