@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { MESSAGE, METHOD, URL } from "@/shared/constants/index";
+import { METHOD, URL } from "@/shared/constants/index";
 
 axios.defaults.baseURL = URL.BASE;
 
@@ -9,12 +9,8 @@ const fetcher = async (
   url: string,
   ...rest: { [key: string]: any }[]
 ) => {
-  try {
-    const res = await axios[method](url, ...rest);
-    return res.data;
-  } catch (error: any) {
-    alert(`${MESSAGE.ALERT_API} (${error.message})`);
-  }
+  const res = await axios[method](url, ...rest);
+  return res.data;
 };
 
 export default fetcher;
