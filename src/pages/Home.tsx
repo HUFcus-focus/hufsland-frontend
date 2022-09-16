@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 
-import { USER } from "@/shared/constants/index";
+import { USER } from "@/shared/constants";
 import { userState } from "@/shared/state/user";
 
 const Home = () => {

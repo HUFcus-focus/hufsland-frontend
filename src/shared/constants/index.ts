@@ -7,6 +7,12 @@ export const METHOD = {
   DELETE: "delete",
 } as const;
 
+export const PATH = Object.freeze({
+  HOME: "/",
+  KAKAO: "/auth/kakao/*",
+  ALL: "*",
+});
+
 export const URL = Object.freeze({
   BASE: `${import.meta.env.BASE_URL}`,
   KAKAO_AUTH: `https://kauth.kakao.com/oauth/authorize?client_id=${

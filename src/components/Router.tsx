@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { Kakao } from "@/components/auth";
-import { USER } from "@/shared/constants/index";
+import { PATH, USER } from "@/shared/constants";
 import { userState } from "@/shared/state/user";
 
 const Home = lazy(() => import("@/pages/Home"));
@@ -27,9 +27,9 @@ const Router = () => {
     <BrowserRouter>
       <Suspense fallback={<></>}>
         <Routes>
-          <Route path='/' element={user.isLoggedIn ? <Home /> : <Auth />} />
-          <Route path='/auth/kakao/*' element={!user.isLoggedIn && <Kakao />}></Route>
-          <Route path='*' element={<Navigate to='/' replace />} />
+          <Route path={`${PATH.HOME}`} element={user.isLoggedIn ? <Home /> : <Auth />} />
+          <Route path={`${PATH.KAKAO}`} element={!user.isLoggedIn && <Kakao />}></Route>
+          <Route path={`${PATH.ALL}`} element={<Navigate to={`${PATH.HOME}`} replace />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

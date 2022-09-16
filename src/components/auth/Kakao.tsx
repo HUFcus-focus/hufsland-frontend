@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { authApi } from "@/shared/api";
-import { ERROR, USER } from "@/shared/constants/index";
+import { ERROR, USER } from "@/shared/constants";
 import { userState } from "@/shared/state/user";
 
 const Kakao = () => {

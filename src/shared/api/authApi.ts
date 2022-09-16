@@ -1,5 +1,5 @@
 import fetcher from "@/shared/api/fetcher";
-import { ERROR, METHOD, URL } from "@/shared/constants/index";
+import { ERROR, METHOD, URL } from "@/shared/constants";
 
 const authApi = {
   async getKakaoToken(code: string) {
