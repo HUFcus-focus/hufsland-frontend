@@ -15,6 +15,8 @@ export const URL = Object.freeze({
   KAKAO_TOKEN: "https://kauth.kakao.com/oauth/token",
 });
 
-export const MESSAGE = Object.freeze({
-  ALERT_API: "에러가 발생했습니다.",
+export const ERROR = Object.freeze({
+  KAKAO_CODE: "카카오 인가코드가 유효하지 않습니다.",
+  KAKAO_TOKEN: "카카오 서버와의 통신에 실패했습니다.",
+  API: "API 서버와의 통신에 실패했습니다.",
 });

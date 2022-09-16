@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { authApi } from "@/shared/api";
-import { USER } from "@/shared/constants/index";
+import { ERROR, USER } from "@/shared/constants/index";
 import { userState } from "@/shared/state/user";
 
 const Kakao = () => {
@@ -12,14 +12,16 @@ const Kakao = () => {
   const navigate = useNavigate();
 
   const kakaoLogin = async () => {
-    if (typeof code === "string") {
-      const kakaoToken = await authApi.getKakaoToken(code);
-      const serviceToken = await authApi.getServiceToken(kakaoToken.access_token);
-      if (serviceToken.token) {
+    if (code) {
+      try {
+        const kakaoToken = await authApi.getKakaoToken(code);
+        const serviceToken = await authApi.getServiceToken(kakaoToken);
         localStorage.setItem(USER, JSON.stringify({ token: serviceToken.token }));
         setUser({ ...user, isLoggedIn: true });
+      } catch (error) {
+        alert(`${error}`);
       }
-    }
+    } else alert(ERROR.KAKAO_CODE);
     navigate("/");
   };
 
