@@ -16,7 +16,7 @@ const Kakao = () => {
       try {
         const kakaoToken = await authApi.getKakaoToken(code);
         const serviceToken = await authApi.getServiceToken(kakaoToken);
-        localStorage.setItem(USER, JSON.stringify({ token: serviceToken.token }));
+        localStorage.setItem(USER, JSON.stringify({ token: serviceToken }));
         setUser({ ...user, isLoggedIn: true });
       } catch (error) {
         alert(`${error}`);
