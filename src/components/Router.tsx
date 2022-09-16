@@ -27,9 +27,9 @@ const Router = () => {
     <BrowserRouter>
       <Suspense fallback={<></>}>
         <Routes>
-          <Route path={`${PATH.HOME}`} element={user.isLoggedIn ? <Home /> : <Auth />} />
-          <Route path={`${PATH.KAKAO}`} element={!user.isLoggedIn && <Kakao />}></Route>
-          <Route path={`${PATH.ALL}`} element={<Navigate to={`${PATH.HOME}`} replace />} />
+          <Route path={PATH.HOME} element={user.isLoggedIn ? <Home /> : <Auth />} />
+          <Route path={PATH.KAKAO} element={!user.isLoggedIn && <Kakao />}></Route>
+          <Route path={PATH.ALL} element={<Navigate to={PATH.HOME} replace />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
