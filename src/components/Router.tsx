@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import { Fragment, lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
@@ -29,15 +29,15 @@ const Router = () => {
       <Suspense fallback={<></>}>
         <Routes>
           {user.isLoggedIn ? (
-            <React.Fragment>
+            <Fragment>
               <Route path={PATH.HOME} element={<Home />} />
               <Route path={PATH.INFO} element={<Info />} />
-            </React.Fragment>
+            </Fragment>
           ) : (
-            <React.Fragment>
+            <Fragment>
               <Route path={PATH.HOME} element={<Auth />} />
               <Route path={PATH.KAKAO} element={<Kakao />} />
-            </React.Fragment>
+            </Fragment>
           )}
           <Route path={PATH.ALL} element={<Navigate to={PATH.HOME} replace />} />
         </Routes>

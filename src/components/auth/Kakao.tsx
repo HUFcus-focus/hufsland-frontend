@@ -19,7 +19,7 @@ const Kakao = () => {
         localStorage.setItem(USER, JSON.stringify({ token: serviceToken }));
         setUser({ ...user, isLoggedIn: true });
       } catch (error) {
-        alert(`${error}`);
+        alert(error);
       }
     } else alert(ERROR.KAKAO_CODE);
     navigate("/");

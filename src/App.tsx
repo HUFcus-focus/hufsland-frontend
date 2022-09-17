@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 
@@ -9,7 +9,7 @@ import { theme } from "@/styles/theme";
 
 function App() {
   return (
-    <React.Fragment>
+    <Fragment>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <RecoilRoot>
@@ -19,7 +19,7 @@ function App() {
           </AppLayout>
         </RecoilRoot>
       </ThemeProvider>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
