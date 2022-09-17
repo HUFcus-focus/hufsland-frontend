@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { authApi } from "@/shared/api";
-import { ERROR, USER } from "@/shared/constants";
+import { ERROR, TOKEN } from "@/shared/constants";
 import { userState } from "@/shared/state/user";
 
 const Kakao = () => {
@@ -16,7 +16,7 @@ const Kakao = () => {
       try {
         const kakaoToken = await authApi.getKakaoToken(code);
         const serviceToken = await authApi.getServiceToken(kakaoToken);
-        localStorage.setItem(USER, JSON.stringify({ token: serviceToken }));
+        localStorage.setItem(TOKEN, serviceToken);
         setUser({ ...user, isLoggedIn: true });
       } catch (error) {
         alert(error);

@@ -1,4 +1,4 @@
-export const USER = "user";
+export const TOKEN = "token";
 
 export const METHOD = {
   GET: "get",
