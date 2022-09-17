@@ -1,13 +1,13 @@
 import { useRecoilState } from "recoil";
 
-import { USER } from "@/shared/constants/index";
+import { TOKEN } from "@/shared/constants";
 import { userState } from "@/shared/state/user";
 
 const Home = () => {
   const [user, setUser] = useRecoilState(userState);
 
   const logout = () => {
-    localStorage.removeItem(USER);
+    localStorage.removeItem(TOKEN);
     setUser({ ...user, isLoggedIn: false });
   };
 
