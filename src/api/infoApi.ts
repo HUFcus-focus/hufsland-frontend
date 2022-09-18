@@ -1,5 +1,5 @@
-import fetcher from "@/shared/api/fetcher";
-import { ERROR, METHOD } from "@/shared/constants";
+import fetcher from "@/api/fetcher";
+import { ERROR, METHOD } from "@/constants";
 
 const infoApi = {
   async linkUserInfo(id: string, pw: string, token: string) {
