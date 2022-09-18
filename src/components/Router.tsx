@@ -3,8 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { Kakao } from "@/components/auth";
-import { PATH, TOKEN } from "@/shared/constants";
-import { userState } from "@/shared/state/user";
+import { PATH, TOKEN } from "@/constants";
+import { userState } from "@/state/user";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Auth = lazy(() => import("@/pages/Auth"));

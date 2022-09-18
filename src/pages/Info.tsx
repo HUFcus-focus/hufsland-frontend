@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
-import { infoApi } from "@/shared/api";
-import { TOKEN } from "@/shared/constants";
+import { infoApi } from "@/api";
+import { TOKEN } from "@/constants";
 
 const Info = () => {
   const [id, setId] = useState("");
@@ -12,9 +12,11 @@ const Info = () => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem(TOKEN) as string;
-      const res = await infoApi.linkUserInfo(id, pw, token);
-      console.log(res);
+      const token = localStorage.getItem(TOKEN);
+      if (token) {
+        const res = await infoApi.linkUserInfo(id, pw, token);
+        console.log(res);
+      }
     } catch (error) {
       alert(error);
     }

@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 
-import { TOKEN } from "@/shared/constants";
-import { userState } from "@/shared/state/user";
+import { TOKEN } from "@/constants";
+import { userState } from "@/state/user";
 
 const Home = () => {
   const [user, setUser] = useRecoilState(userState);

@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
-import { authApi } from "@/shared/api";
-import { ERROR, TOKEN } from "@/shared/constants";
-import { userState } from "@/shared/state/user";
+import { authApi } from "@/api";
+import { ERROR, TOKEN } from "@/constants";
+import { userState } from "@/state/user";
 
 const Kakao = () => {
   const code = new URL(document.URL).searchParams.get("code");
