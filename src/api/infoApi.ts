@@ -8,8 +8,8 @@ const infoApi = {
         METHOD.POST,
         "info/login",
         {
-          id: id,
-          pw: pw,
+          id,
+          pw,
         },
         {
           headers: {

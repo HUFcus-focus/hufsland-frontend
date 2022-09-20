@@ -7,7 +7,7 @@ const authApi = {
       grant_type: "authorization_code",
       client_id: import.meta.env.VITE_REST_API_KEY,
       redirect_uri: import.meta.env.VITE_REDIRECT_URI,
-      code: code,
+      code,
     };
     const queryString: any = Object.keys(data)
       .map((key) => encodeURIComponent(key) + "=" + encodeURI(data[key]))
@@ -25,7 +25,7 @@ const authApi = {
   },
   async getServiceToken(token: string) {
     try {
-      const res = await fetcher(METHOD.GET, "auth/token", {
+      const res = await fetcher(METHOD.GET, "login/oauth2/kakao", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
