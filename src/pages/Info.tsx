@@ -14,7 +14,7 @@ const Info = () => {
     try {
       const token = localStorage.getItem(TOKEN);
       if (token) {
-        const res = await infoApi.linkUserInfo(id, pw, token);
+        const res = await infoApi.linkUserInfo({ id, pw, token });
         console.log(res);
       }
     } catch (error) {
