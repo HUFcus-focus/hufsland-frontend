@@ -2,8 +2,9 @@ import { Fragment } from "react";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 
-import { AppLayout, DebugObserver } from "@/components/common";
+import { AppLayout } from "@/components/common";
 import Router from "@/components/Router";
+import DebugObserver from "@/state/tools/DebugObserver";
 import { GlobalStyle } from "@/styles/global-style";
 import { theme } from "@/styles/theme";
 
