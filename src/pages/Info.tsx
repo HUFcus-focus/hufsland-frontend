@@ -25,9 +25,13 @@ const Info = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input placeholder='학번' {...register("id", { required: true })} />
-      {errors.id && <span>학번을 입력해주세요</span>}
-      <input placeholder='비밀번호' {...register("pw", { required: true })} />
+      <input
+        placeholder='학번'
+        type='text'
+        {...register("id", { required: true, pattern: /[^a-z|A-Z|ㄱ-ㅎ|가-힣]{9}/g, maxLength: 9 })}
+      />
+      {errors.id && <span>학번을 정확히 입력해주세요</span>}
+      <input placeholder='비밀번호' type='password' {...register("pw", { required: true })} />
       {errors.pw && <span>비밀번호를 입력해주세요</span>}
       <button type='submit'>연동하기</button>
     </form>
