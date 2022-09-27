@@ -3,8 +3,6 @@ export interface Inputs {
   pw: string;
 }
 
-export interface LinkUserInfoParams {
-  id: string;
-  pw: string;
+export interface LinkUserInfoParams extends Inputs {
   token: string;
 }

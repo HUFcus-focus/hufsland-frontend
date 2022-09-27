@@ -11,11 +11,11 @@ const Info = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (inputs) => {
     try {
       const token = localStorage.getItem(TOKEN);
       if (token) {
-        const res = await infoApi.linkUserInfo({ ...data, token });
+        const res = await infoApi.linkUserInfo({ ...inputs, token });
         console.log(res);
       }
     } catch (error) {
