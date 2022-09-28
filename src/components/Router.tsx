@@ -2,6 +2,7 @@ import { Fragment, lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
+import { authApi } from "@/api";
 import { Kakao } from "@/components/auth";
 import { PATH, TOKEN } from "@/constants";
 import { userState } from "@/state/user";
@@ -13,15 +14,22 @@ const Info = lazy(() => import("@/pages/Info"));
 const Router = () => {
   const [user, setUser] = useRecoilState(userState);
 
+  const checkStorageToken = async () => {
+    const token = localStorage.getItem(TOKEN) as string;
+    setUser({ ...user, isLoggedIn: Boolean(token) });
+    try {
+      const res = await authApi.isTokenValid(token);
+      console.log(res);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  // localStorage의 모든 변화를 감지
   useEffect(() => {
-    const checkLocalStorage = () => {
-      setUser({ ...user, isLoggedIn: Boolean(localStorage.getItem(TOKEN)) });
-    };
-    addEventListener("storage", checkLocalStorage);
-    checkLocalStorage();
-    return () => {
-      removeEventListener("storage", checkLocalStorage);
-    };
+    addEventListener("storage", checkStorageToken);
+    checkStorageToken();
+    return () => removeEventListener("storage", checkStorageToken);
   }, []);
 
   return (
