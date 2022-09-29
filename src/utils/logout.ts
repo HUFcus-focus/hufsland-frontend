@@ -1,9 +1,8 @@
 import { TOKEN } from "@/constants";
-import { User } from "@/types";
 
-const logout = (user: User, setUser: (state: User) => void) => {
+const logout = () => {
   localStorage.removeItem(TOKEN);
-  setUser({ ...user, isLoggedIn: false });
+  location.reload();
 };
 
 export default logout;

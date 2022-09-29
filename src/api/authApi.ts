@@ -1,10 +1,6 @@
 import fetcher from "@/api/fetcher";
 import { ERROR, METHOD, URL } from "@/constants";
 
-/**
- * TODO: res.data 값 확인
- * https://yamoo9.github.io/axios/guide/response-schema.html
- */
 const authApi = {
   async getKakaoToken(code: string) {
     const data: any = {
@@ -34,19 +30,19 @@ const authApi = {
           Authorization: `Bearer ${token}`,
         },
       });
-      return res.token;
+      return res.token.jwt;
     } catch {
       throw ERROR.API;
     }
   },
   async isTokenValid(token: string) {
     try {
-      const res = await fetcher(METHOD.GET, "/", {
+      const res = await fetcher(METHOD.GET, "api/token/check", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      return res;
+      return res.status;
     } catch {
       throw ERROR.TOKEN;
     }

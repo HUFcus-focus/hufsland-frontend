@@ -18,21 +18,20 @@ const Router = () => {
   const checkStorageToken = async () => {
     const token = localStorage.getItem(TOKEN);
     if (!token) setUser({ ...user, isLoggedIn: false });
-    else
+    else {
       try {
-        // TODO: 로그인 상태 관리
-        const res = await authApi.isTokenValid(token);
-        console.log(res);
+        const status = await authApi.isTokenValid(token);
+        status === "OK" ? setUser({ ...user, isLoggedIn: true }) : logout();
       } catch (error) {
-        logout(user, setUser);
+        logout();
         alert(error);
       }
+    }
   };
 
-  // localStorage의 모든 변화를 감지
   useEffect(() => {
-    addEventListener("storage", checkStorageToken);
     checkStorageToken();
+    addEventListener("storage", checkStorageToken);
     return () => removeEventListener("storage", checkStorageToken);
   }, []);
 
