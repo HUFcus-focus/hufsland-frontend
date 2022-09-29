@@ -6,6 +6,7 @@ import { authApi } from "@/api";
 import { Kakao } from "@/components/auth";
 import { PATH, TOKEN } from "@/constants";
 import { userState } from "@/state/user";
+import { logout } from "@/utils";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Auth = lazy(() => import("@/pages/Auth"));
@@ -15,14 +16,17 @@ const Router = () => {
   const [user, setUser] = useRecoilState(userState);
 
   const checkStorageToken = async () => {
-    const token = localStorage.getItem(TOKEN) as string;
-    setUser({ ...user, isLoggedIn: Boolean(token) });
-    try {
-      const res = await authApi.isTokenValid(token);
-      console.log(res);
-    } catch (error) {
-      alert(error);
-    }
+    const token = localStorage.getItem(TOKEN);
+    if (!token) setUser({ ...user, isLoggedIn: false });
+    else
+      try {
+        // TODO: 로그인 상태 관리
+        const res = await authApi.isTokenValid(token);
+        console.log(res);
+      } catch (error) {
+        logout(user, setUser);
+        alert(error);
+      }
   };
 
   // localStorage의 모든 변화를 감지
