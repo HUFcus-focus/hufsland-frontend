@@ -1,16 +1,6 @@
-import { useRecoilState } from "recoil";
-
-import { TOKEN } from "@/constants";
-import { userState } from "@/state/user";
+import { logout } from "@/utils";
 
 const Home = () => {
-  const [user, setUser] = useRecoilState(userState);
-
-  const logout = () => {
-    localStorage.removeItem(TOKEN);
-    setUser({ ...user, isLoggedIn: false });
-  };
-
   return <button onClick={() => logout()}>Logout</button>;
 };
 

@@ -2,9 +2,11 @@ import { Fragment, lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
+import { authApi } from "@/api";
 import { Kakao } from "@/components/auth";
 import { PATH, TOKEN } from "@/constants";
 import { userState } from "@/state/user";
+import { logout } from "@/utils";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Auth = lazy(() => import("@/pages/Auth"));
@@ -13,15 +15,24 @@ const Info = lazy(() => import("@/pages/Info"));
 const Router = () => {
   const [user, setUser] = useRecoilState(userState);
 
+  const checkStorageToken = async () => {
+    const token = localStorage.getItem(TOKEN);
+    if (!token) setUser({ ...user, isLoggedIn: false });
+    else {
+      try {
+        const status = await authApi.isTokenValid(token);
+        status === "OK" ? setUser({ ...user, isLoggedIn: true }) : logout();
+      } catch (error) {
+        logout();
+        alert(error);
+      }
+    }
+  };
+
   useEffect(() => {
-    const checkLocalStorage = () => {
-      setUser({ ...user, isLoggedIn: Boolean(localStorage.getItem(TOKEN)) });
-    };
-    addEventListener("storage", checkLocalStorage);
-    checkLocalStorage();
-    return () => {
-      removeEventListener("storage", checkLocalStorage);
-    };
+    checkStorageToken();
+    addEventListener("storage", checkStorageToken);
+    return () => removeEventListener("storage", checkStorageToken);
   }, []);
 
   return (

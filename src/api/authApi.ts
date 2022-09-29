@@ -30,9 +30,21 @@ const authApi = {
           Authorization: `Bearer ${token}`,
         },
       });
-      return res.token;
+      return res.token.jwt;
     } catch {
       throw ERROR.API;
+    }
+  },
+  async isTokenValid(token: string) {
+    try {
+      const res = await fetcher(METHOD.GET, "api/token/check", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.status;
+    } catch {
+      throw ERROR.TOKEN;
     }
   },
 };

@@ -1,10 +1,12 @@
+export interface User {
+  isLoggedIn: boolean;
+}
+
 export interface Inputs {
   id: string;
   pw: string;
 }
 
-export interface LinkUserInfoParams {
-  id: string;
-  pw: string;
+export interface LinkUserInfoParams extends Inputs {
   token: string;
 }

@@ -27,4 +27,5 @@ export const ERROR = Object.freeze({
   KAKAO_TOKEN: "카카오 서버와의 통신에 실패했습니다.",
   API: "API 서버와의 통신에 실패했습니다.",
   INFO: "종합정보시스템 연동에 실패했습니다.",
+  TOKEN: "엑세스 토큰 인증에 실패했습니다.",
 });

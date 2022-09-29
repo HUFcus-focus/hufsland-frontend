@@ -11,11 +11,11 @@ const Info = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (inputs) => {
     try {
       const token = localStorage.getItem(TOKEN);
       if (token) {
-        const res = await infoApi.linkUserInfo({ ...data, token });
+        const res = await infoApi.linkUserInfo({ ...inputs, token });
         console.log(res);
       }
     } catch (error) {
@@ -28,7 +28,11 @@ const Info = () => {
       <input
         placeholder='학번'
         type='text'
-        {...register("id", { required: true, pattern: /[^a-z|A-Z|ㄱ-ㅎ|가-힣]{9}/g, maxLength: 9 })}
+        {...register("id", {
+          required: true,
+          pattern: /[^a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{9}/g,
+          maxLength: 9,
+        })}
       />
       {errors.id && <span>학번을 정확히 입력해주세요</span>}
       <input placeholder='비밀번호' type='password' {...register("pw", { required: true })} />
