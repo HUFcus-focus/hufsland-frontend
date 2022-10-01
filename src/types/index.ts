@@ -1,7 +1,3 @@
-export interface User {
-  isLoggedIn: boolean;
-}
-
 export interface Inputs {
   id: string;
   pw: string;
