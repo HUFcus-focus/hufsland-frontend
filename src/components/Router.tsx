@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 
 import { authApi } from "@/api";
 import { Kakao } from "@/components/auth";
+import { Loading } from "@/components/common";
 import { PATH, TOKEN } from "@/constants";
 import { userState } from "@/state/user";
 import { logout } from "@/utils";
@@ -37,7 +38,7 @@ const Router = () => {
 
   return (
     <BrowserRouter>
-      <Suspense fallback={<></>}>
+      <Suspense fallback={<Loading />}>
         <Routes>
           {user.isLoggedIn ? (
             <Fragment>
