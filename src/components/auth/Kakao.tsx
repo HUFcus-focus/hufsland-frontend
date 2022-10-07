@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import { authApi } from "@/api";
+import { Loading } from "@/components/common";
 import { ERROR, TOKEN } from "@/constants";
 import { userState } from "@/state/user";
 
@@ -29,7 +30,7 @@ const Kakao = () => {
     kakaoLogin();
   }, []);
 
-  return <>Loading...</>;
+  return <Loading />;
 };
 
 export default Kakao;
