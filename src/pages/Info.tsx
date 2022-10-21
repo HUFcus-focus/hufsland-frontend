@@ -1,45 +1,32 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import styled from "styled-components";
 
-import { infoApi } from "@/api";
-import { TOKEN } from "@/constants";
-import { Inputs } from "@/types";
+import { SharedLayout } from "@/components/common";
+import { InfoForm } from "@/components/info";
 
 const Info = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
-
-  const onSubmit: SubmitHandler<Inputs> = async (inputs) => {
-    try {
-      const token = localStorage.getItem(TOKEN);
-      if (token) {
-        const res = await infoApi.linkUserInfo({ ...inputs, token });
-        console.log(res);
-      }
-    } catch (error) {
-      alert(error);
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        placeholder='학번'
-        type='text'
-        {...register("id", {
-          required: true,
-          pattern: /[^a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{9}/g,
-          maxLength: 9,
-        })}
-      />
-      {errors.id && <span>학번을 정확히 입력해주세요</span>}
-      <input placeholder='비밀번호' type='password' {...register("pw", { required: true })} />
-      {errors.pw && <span>비밀번호를 입력해주세요</span>}
-      <button type='submit'>연동하기</button>
-    </form>
+    <SharedLayout>
+      <Text mt='50' size='24'>
+        <span style={{ fontWeight: "bold" }}>종합정보시스템</span>을
+        <br /> 연결해주세요.
+      </Text>
+      <InfoForm />
+      <Text mt='20' size='15'>
+        계정을 잊으셨나요?{" "}
+        <a href='https://wis.hufs.ac.kr/src08/jsp/index.jsp'>
+          <span style={{ fontWeight: "bold" }}>종정시 바로가기</span>
+        </a>
+      </Text>
+    </SharedLayout>
   );
 };
 
 export default Info;
+
+const Text = styled.div`
+  color: ${({ theme }) => theme.color.blue};
+  font-family: "Noto Sans KR";
+  line-height: 35px;
+  margin-top: ${(props: any) => props.mt}px;
+  font-size: ${(props: any) => props.size}px;
+` as any;
