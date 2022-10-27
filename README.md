@@ -1,4 +1,8 @@
-## Introduction
+<p align="center"><img src="https://user-images.githubusercontent.com/61545957/198277755-ca09e2b5-8b53-45b0-ba01-1f68e45ab2a4.png" width="300px"></p>
+
+<p align="center"><i>외대인을 위한 맞춤 졸업관리 서비스, <b>외딴섬</b></i></p>
+
+## Getting Started
 
 패키지 매니저로 `yarn`을 사용합니다. 없는 경우 다음 명령어로 설치해주세요
 
