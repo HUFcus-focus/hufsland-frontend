@@ -61,7 +61,7 @@ const Input = styled.input`
   font-family: "Noto Sans KR";
   font-weight: bold;
   font-size: 16px;
-  border-radius: 20px;
+  border-radius: 15px;
   width: 245px;
   height: 20px;
   padding: 15px;
