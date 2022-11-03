@@ -18,19 +18,19 @@ const authApi = {
           "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
         },
       });
-      return res.access_token;
+      return res.data.access_token;
     } catch {
       throw ERROR.KAKAO_TOKEN;
     }
   },
   async getServiceToken(token: string) {
     try {
-      const res = await fetcher(METHOD.GET, "login/oauth2/kakao", {
+      const res = await fetcher(METHOD.POST, "login/oauth2/kakao", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      return res.token.jwt;
+      return res.headers["Authorization"].split(" ")[1];
     } catch {
       throw ERROR.API;
     }
@@ -42,7 +42,7 @@ const authApi = {
           Authorization: `Bearer ${token}`,
         },
       });
-      return res.status;
+      return res.data.status;
     } catch {
       throw ERROR.TOKEN;
     }
