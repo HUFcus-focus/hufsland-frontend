@@ -18,7 +18,7 @@ const infoApi = {
           },
         },
       );
-      return res;
+      return res.data;
     } catch {
       throw ERROR.INFO;
     }

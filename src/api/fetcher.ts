@@ -10,7 +10,7 @@ const fetcher = async (
   ...rest: { [key: string]: any }[]
 ) => {
   const res = await axios[method](url, ...rest);
-  return res.data;
+  return res;
 };
 
 export default fetcher;
