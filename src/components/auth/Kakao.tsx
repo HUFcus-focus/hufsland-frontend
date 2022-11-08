@@ -15,8 +15,7 @@ const Kakao = () => {
   const kakaoLogin = async () => {
     if (code) {
       try {
-        const kakaoToken = await authApi.getKakaoToken(code);
-        const serviceToken = await authApi.getServiceToken(kakaoToken);
+        const serviceToken = await authApi.getServiceToken(code);
         localStorage.setItem(TOKEN, serviceToken);
         setUser({ ...user, isLoggedIn: true });
       } catch (error) {
