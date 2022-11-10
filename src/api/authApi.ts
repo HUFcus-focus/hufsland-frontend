@@ -4,10 +4,10 @@ import { ERROR, METHOD } from "@/constants";
 const authApi = {
   async getServiceToken(code: string) {
     try {
-      const res = await fetcher(METHOD.GET, "login/oauth2/kakao", {
+      const res = await fetcher(METHOD.GET, "v1/auth/kakao", {
         params: { code },
       });
-      return res.headers["Authorization"].split(" ")[1];
+      return res.headers["authorization"].split(" ")[1];
     } catch {
       throw ERROR.API;
     }
