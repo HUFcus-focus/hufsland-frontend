@@ -14,12 +14,12 @@ const authApi = {
   },
   async isTokenValid(token: string) {
     try {
-      const res = await fetcher(METHOD.GET, "api/token/check", {
+      const res = await fetcher(METHOD.GET, "v1/auth/token", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      return res.data.status;
+      return res;
     } catch {
       throw ERROR.TOKEN;
     }
