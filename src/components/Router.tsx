@@ -18,15 +18,28 @@ const Router = () => {
 
   const checkStorageToken = async () => {
     const token = localStorage.getItem(TOKEN);
-    if (!token) setUser({ ...user, isLoggedIn: false });
-    else {
-      try {
-        const status = await authApi.isTokenValid(token);
-        status === "OK" ? setUser({ ...user, isLoggedIn: true }) : logout();
-      } catch (error) {
-        logout();
-        alert(error);
+    if (!token) return setUser({ ...user, isLoggedIn: false });
+
+    try {
+      const res = await authApi.isTokenValid(token);
+
+      switch (res.data.status) {
+        case "OK":
+          setUser({ ...user, isLoggedIn: true });
+          break;
+        case "RENEW": {
+          const serviceToken = res.headers["authorization"].split(" ")[1];
+          localStorage.setItem(TOKEN, serviceToken);
+          setUser({ ...user, isLoggedIn: true });
+          break;
+        }
+        case "EXPIRED":
+          logout();
+          break;
       }
+    } catch (error) {
+      logout();
+      alert(error);
     }
   };
 
